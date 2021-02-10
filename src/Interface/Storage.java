@@ -64,6 +64,8 @@ public class Storage {
         return currRd;
     }
 
-    
+    public Semaphore getConsoles() {
+        return consoles;
+    }
     
 }
