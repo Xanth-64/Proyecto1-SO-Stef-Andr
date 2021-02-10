@@ -5,6 +5,14 @@
  */
 package Interface;
 
+import Classes.Assembler;
+import Classes.ButtProducer;
+import Classes.JoyProducer;
+import Classes.Limit;
+import Classes.RdProducer;
+import Classes.ScrProducer;
+import Classes.Storage;
+
 /**
  *
  * @author Xanth
@@ -12,15 +20,36 @@ package Interface;
 public class Window1 extends javax.swing.JFrame {
 
     public static volatile int timeInterval;
-    public static volatile int maxJoy;
-    public static volatile int maxScr;
-    public static volatile int maxButt;
-    public static volatile int maxRd;
+    public static volatile Limit companyLimit;
     public static volatile Storage companyStorage;
+    
     /**
      * Creates new form Window1
      */
     public Window1() {
+        timeInterval = 3;
+        companyLimit = new Limit(20,20,20,20);
+        companyStorage = new Storage(0,0,0,0,0,0);
+        
+        ButtProducer Butt = new ButtProducer();
+        JoyProducer Joy = new JoyProducer();
+        RdProducer Rd = new RdProducer();
+        ScrProducer Scr = new ScrProducer();
+        Assembler Ass = new Assembler();
+        
+        Thread A1 = new Thread(Butt);
+        Thread A2 = new Thread(Joy);
+        Thread A3 = new Thread(Rd);
+        Thread A4 = new Thread(Scr);
+        Thread A5 = new Thread(Ass);
+        
+        A1.start();
+        A2.start();
+        A3.start();
+        A4.start();
+        A5.start();
+        
+
         initComponents();
     }
 
@@ -94,19 +123,10 @@ public class Window1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                timeInterval = 1;
-                companyStorage = new Storage(20,51,20,20,20,0);
+  
                 new Window1().setVisible(true);
                 
-                Assembler A1 = new Assembler();
-                Assembler A2 = new Assembler();
-                A1.name = "A1";
-                A2.name = "A2";
-                
-                Thread T1 = new Thread(A1);
-                Thread T2 = new Thread(A2);
-                T1.start();
-                T2.start();
+ 
             }
         });
     }

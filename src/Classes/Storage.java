@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package Classes;
 
 import java.util.concurrent.Semaphore;
 
@@ -62,6 +62,13 @@ public class Storage {
      */
     public Semaphore getCurrRd() {
         return currRd;
+    }
+
+    /**
+     * @return the consoles
+     */
+    public Semaphore getConsoles() {
+        return consoles;
     }
 
     
