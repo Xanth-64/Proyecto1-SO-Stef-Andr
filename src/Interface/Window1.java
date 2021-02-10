@@ -7,11 +7,14 @@ package Interface;
 
 import Classes.Assembler;
 import Classes.ButtProducer;
+import Classes.Gerente;
+import Classes.Jefe;
 import Classes.JoyProducer;
 import Classes.Limit;
 import Classes.RdProducer;
 import Classes.ScrProducer;
 import Classes.Storage;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -23,13 +26,23 @@ public class Window1 extends javax.swing.JFrame {
     public static volatile Limit companyLimit;
     public static volatile Storage companyStorage;
     
+    public static volatile int contador;
+    public static volatile Semaphore semaforoContador;
+    public static volatile int limiteContador;
+    
     /**
      * Creates new form Window1
      */
     public Window1() {
-        timeInterval = 3;
+        timeInterval = 10;
+        limiteContador = 5;
+        semaforoContador = new Semaphore(1,true);
+        contador = 0;
         companyLimit = new Limit(20,20,20,20);
         companyStorage = new Storage(0,0,0,0,0,0);
+        
+        Gerente bob = new Gerente();
+        Jefe john = new Jefe();
         
         ButtProducer Butt = new ButtProducer();
         JoyProducer Joy = new JoyProducer();
@@ -42,6 +55,12 @@ public class Window1 extends javax.swing.JFrame {
         Thread A3 = new Thread(Rd);
         Thread A4 = new Thread(Scr);
         Thread A5 = new Thread(Ass);
+        
+        Thread G1 = new Thread(bob);
+        Thread J1 = new Thread(john);
+        
+        J1.start();
+        G1.start();
         
         A1.start();
         A2.start();
