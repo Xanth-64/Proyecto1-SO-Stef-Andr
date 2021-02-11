@@ -22,7 +22,6 @@ public class Window2 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Window2.w1 = w1;
-        Window2.w1.setVisible(false);
         this.seconds_of_a_day.setText(Integer.toString(Window1.seconds_of_a_day));
         this.days_between_shipments.setText(Integer.toString(Window1.days_between_shipments));
         this.maximum_button_capacity.setText(Integer.toString(Window1.maximum_button_capacity));
@@ -78,7 +77,32 @@ public class Window2 extends javax.swing.JFrame {
             
             }catch (Exception err) {
                 JOptionPane.showMessageDialog(this, "Sorry, there was a save error. The values ​​will be reset.");
-        }
+                try {
+                String data =   "Time in seconds of a day:" + 24 + "\n" +
+                                "Number of days between shipments:" + 30 + "\n" +
+                                "Button storage maximum capacity:" + 45 + "\n" +
+                                "Joystick storage maximum capacity:" + 20 + "\n" +
+                                "Screen storage maximum capacity:" + 40 + "\n" +
+                                "SD reader storage maximum capacity:" + 15 + "\n" +
+                                "Initial number of button producers:" + 1 + "\n" +
+                                "Initial number of joystick producers:" + 1 + "\n" +
+                                "Initial number of screen producers:" + 1 + "\n" +
+                                "Initial number of SD reader producers:" + 1 + "\n" +
+                                "Maximum button producers:" + 3 + "\n" +
+                                "Maximum joystick producers:" + 4 + "\n" +
+                                "Maximum screen producers:" + 5 + "\n" +
+                                "Maximum SD reader producers:" + 4 + "\n" +
+                                "Initial number of assemblers:" + 1 + "\n" +
+                                "Maximum number of assemblers:" + 5;
+
+                PrintWriter pw = new PrintWriter("test\\nintendo.txt");
+                pw.print(data);
+                pw.close();
+
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Sorry, there was a save error.");
+                }
+            }
         
     }
     

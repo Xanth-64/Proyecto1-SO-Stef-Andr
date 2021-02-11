@@ -5,6 +5,11 @@
  */
 package Interface;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -65,11 +70,98 @@ public class Window1 extends javax.swing.JFrame {
         max_sdreader_producers = 4;
         initial_assemblers = 1;
         max_assemblers = 5;
+        leer_txt();
         this.setVisible(true);
         
     }
     
-    
+    public void leer_txt(){
+        String line;
+        String txt = "";
+        String path = "test\\nintendo.txt";
+        File file = new File(path);
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }else{
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                while ((line = br.readLine()) != null) {
+                    if (!line.isEmpty()) {
+                        txt += line + "\n";
+                    }
+                }
+                
+                if (!"".equals(txt)) {
+                    String[] txt_split = txt.split("\n");
+                    for (int i = 0; i < txt_split.length; i++) {
+                        String[] data = txt_split[i].split(":");
+                        if (data[0].contains("Time in seconds of a day")) {
+                            seconds_of_a_day = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Number of days between shipments")){
+                            days_between_shipments = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Button storage maximum capacity")){
+                            maximum_button_capacity = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Joystick storage maximum capacity")){
+                            maximum_joystick_capacity = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Screen storage maximum capacity")){
+                            maximum_screen_capacity = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("SD reader storage maximum capacity")){
+                            maximum_sdreader_capacity = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Initial number of button producers")){
+                            initial_button_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Initial number of joystick producers")){
+                            initial_joystick_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Initial number of screen producers")){
+                            initial_screen_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Initial number of SD reader producers")){
+                            initial_sdreader_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Maximum button producers")){
+                            max_button_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Maximum joystick producers")){
+                            max_joystick_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Maximum screen producers")){
+                            max_screen_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Maximum SD reader producers")){
+                            max_sdreader_producers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Initial number of assemblers")){
+                            initial_assemblers = Integer.parseInt(data[1]);
+                        }else if(data[0].contains("Maximum number of assemblers")){
+                            max_assemblers = Integer.parseInt(data[1]);
+                        }
+                    }
+                }
+                br.close();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error reading the txt. The values ​​will be reset.");
+            try {
+            String data =   "Time in seconds of a day:" + 24 + "\n" +
+                            "Number of days between shipments:" + 30 + "\n" +
+                            "Button storage maximum capacity:" + 45 + "\n" +
+                            "Joystick storage maximum capacity:" + 20 + "\n" +
+                            "Screen storage maximum capacity:" + 40 + "\n" +
+                            "SD reader storage maximum capacity:" + 15 + "\n" +
+                            "Initial number of button producers:" + 1 + "\n" +
+                            "Initial number of joystick producers:" + 1 + "\n" +
+                            "Initial number of screen producers:" + 1 + "\n" +
+                            "Initial number of SD reader producers:" + 1 + "\n" +
+                            "Maximum button producers:" + 3 + "\n" +
+                            "Maximum joystick producers:" + 4 + "\n" +
+                            "Maximum screen producers:" + 5 + "\n" +
+                            "Maximum SD reader producers:" + 4 + "\n" +
+                            "Initial number of assemblers:" + 1 + "\n" +
+                            "Maximum number of assemblers:" + 5;
+            
+            PrintWriter pw = new PrintWriter("test\\nintendo.txt");
+            pw.print(data);
+            pw.close();
+            
+            }catch (Exception err) {
+                JOptionPane.showMessageDialog(this, "Sorry, there was a save error.");
+            }
+        }
+    }
     
     public javax.swing.JLabel getButtons() {
         return buttons;
