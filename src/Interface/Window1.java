@@ -20,7 +20,28 @@ public class Window1 extends javax.swing.JFrame {
     public static volatile int maxButt;
     public static volatile int maxRd;
     public static volatile Storage companyStorage;
+    
+    //Block start
     public static boolean flag;
+    
+    //TXT
+    public static int seconds_of_a_day;
+    public static int days_between_shipments;
+    public static int maximum_button_capacity;
+    public static int maximum_joystick_capacity;
+    public static int maximum_screen_capacity;
+    public static int maximum_sdreader_capacity;
+    public static int initial_button_producers;
+    public static int initial_joystick_producers;
+    public static int initial_screen_producers;
+    public static int initial_sdreader_producers;
+    public static int max_button_producers;
+    public static int max_joystick_producers;
+    public static int max_screen_producers;
+    public static int max_sdreader_producers;
+    public static int initial_assemblers;
+    public static int max_assemblers;
+    
     /**
      * Creates new form Window1
      */
@@ -111,8 +132,8 @@ public class Window1 extends javax.swing.JFrame {
         buttons = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         ButtonProducers = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
+        add_button_producer = new javax.swing.JLabel();
+        delete_button_producer = new javax.swing.JLabel();
         button_producers = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         JoystickProduction = new javax.swing.JTabbedPane();
@@ -121,10 +142,10 @@ public class Window1 extends javax.swing.JFrame {
         joysticks = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         JoystickProducers = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
+        add_joystick_producer = new javax.swing.JLabel();
         joysticks_producers = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
+        delete_joystick_producer = new javax.swing.JLabel();
         ScreenProduction = new javax.swing.JTabbedPane();
         Screens = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -135,26 +156,26 @@ public class Window1 extends javax.swing.JFrame {
         touch = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         ScreedProducers = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
+        add_screen_producer = new javax.swing.JLabel();
         screen_producers = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
+        delete_screen_producer = new javax.swing.JLabel();
         SDReaderProduction = new javax.swing.JTabbedPane();
         SDReaders = new javax.swing.JPanel();
         sd_readers = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         SDRProducers1 = new javax.swing.JPanel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
+        add_sdreaders_producer = new javax.swing.JLabel();
         sd_reader_producers = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        delete_sdreaders_producer = new javax.swing.JLabel();
         Employees = new javax.swing.JTabbedPane();
         Assemblers = new javax.swing.JPanel();
         assemblers = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        delete_assembler = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        add_assembler = new javax.swing.JLabel();
         Boss = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         boss_status = new javax.swing.JLabel();
@@ -174,6 +195,7 @@ public class Window1 extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         remaining_days = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
+        txt_button = new javax.swing.JLabel();
         start_button = new javax.swing.JLabel();
         exit_button = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
@@ -207,11 +229,11 @@ public class Window1 extends javax.swing.JFrame {
         ButtonProducers.setBackground(new java.awt.Color(255, 255, 255));
         ButtonProducers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
-        ButtonProducers.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 40, 40));
+        add_button_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        ButtonProducers.add(add_button_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 40));
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
-        ButtonProducers.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 40, 40));
+        delete_button_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        ButtonProducers.add(delete_button_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
 
         button_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         button_producers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -247,11 +269,8 @@ public class Window1 extends javax.swing.JFrame {
         JoystickProducers.setBackground(new java.awt.Color(255, 255, 255));
         JoystickProducers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
-        JoystickProducers.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 40, 40));
-
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
-        JoystickProducers.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 40, 40));
+        add_joystick_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        JoystickProducers.add(add_joystick_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 40));
 
         joysticks_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         joysticks_producers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -260,6 +279,9 @@ public class Window1 extends javax.swing.JFrame {
 
         jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eevee.png"))); // NOI18N
         JoystickProducers.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 70, 80));
+
+        delete_joystick_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        JoystickProducers.add(delete_joystick_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
 
         JoystickProduction.addTab("Producers", JoystickProducers);
 
@@ -302,11 +324,8 @@ public class Window1 extends javax.swing.JFrame {
         ScreedProducers.setBackground(new java.awt.Color(255, 255, 255));
         ScreedProducers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
-        ScreedProducers.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 40, 40));
-
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
-        ScreedProducers.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 40, 40));
+        add_screen_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        ScreedProducers.add(add_screen_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 40));
 
         screen_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         screen_producers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -315,6 +334,9 @@ public class Window1 extends javax.swing.JFrame {
 
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/charmander.png"))); // NOI18N
         ScreedProducers.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 70, 80));
+
+        delete_screen_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        ScreedProducers.add(delete_screen_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, 40));
 
         ScreenProduction.addTab("Producers", ScreedProducers);
 
@@ -341,11 +363,8 @@ public class Window1 extends javax.swing.JFrame {
         SDRProducers1.setBackground(new java.awt.Color(255, 255, 255));
         SDRProducers1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
-        SDRProducers1.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 40, 40));
-
-        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
-        SDRProducers1.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 40, 40));
+        add_sdreaders_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        SDRProducers1.add(add_sdreaders_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 40));
 
         sd_reader_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         sd_reader_producers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -354,6 +373,9 @@ public class Window1 extends javax.swing.JFrame {
 
         jLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/psyduck_1.png"))); // NOI18N
         SDRProducers1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 70, 80));
+
+        delete_sdreaders_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        SDRProducers1.add(delete_sdreaders_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
 
         SDReaderProduction.addTab("Producers", SDRProducers1);
 
@@ -369,14 +391,14 @@ public class Window1 extends javax.swing.JFrame {
         assemblers.setText("0");
         Assemblers.add(assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 60, 70));
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
-        Assemblers.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 40, 40));
+        delete_assembler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        Assemblers.add(delete_assembler, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, 40));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/teamwork.png"))); // NOI18N
         Assemblers.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 70, 80));
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
-        Assemblers.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 40, 40));
+        add_assembler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        Assemblers.add(add_assembler, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 40));
 
         Employees.addTab("Assemblers", Assemblers);
 
@@ -454,6 +476,14 @@ public class Window1 extends javax.swing.JFrame {
 
         jPanel1.add(New15SDXL, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 180, 180));
 
+        txt_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/txt.png"))); // NOI18N
+        txt_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_buttonMouseClicked(evt);
+            }
+        });
+        jPanel1.add(txt_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, -1, 70));
+
         start_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/play.png"))); // NOI18N
         start_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -473,7 +503,7 @@ public class Window1 extends javax.swing.JFrame {
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nintendo (5).png"))); // NOI18N
         jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 700, 110));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Mario.png"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background3.jpg"))); // NOI18N
         jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 570));
@@ -496,6 +526,10 @@ public class Window1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Production has already started.");
         }
     }//GEN-LAST:event_start_buttonMouseClicked
+
+    private void txt_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_buttonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_buttonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -569,11 +603,21 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JTabbedPane ScreenProduction;
     private javax.swing.JPanel Screens;
     private javax.swing.JPanel TouchScreens;
+    private javax.swing.JLabel add_assembler;
+    private javax.swing.JLabel add_button_producer;
+    private javax.swing.JLabel add_joystick_producer;
+    private javax.swing.JLabel add_screen_producer;
+    private javax.swing.JLabel add_sdreaders_producer;
     protected static volatile javax.swing.JLabel assemblers;
     protected static volatile javax.swing.JLabel boss_status;
     protected static volatile javax.swing.JLabel button_producers;
     protected static volatile javax.swing.JLabel buttons;
     protected static volatile javax.swing.JLabel days_passed;
+    private javax.swing.JLabel delete_assembler;
+    private javax.swing.JLabel delete_button_producer;
+    private javax.swing.JLabel delete_joystick_producer;
+    private javax.swing.JLabel delete_screen_producer;
+    private javax.swing.JLabel delete_sdreaders_producer;
     private javax.swing.JLabel exit_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -581,27 +625,17 @@ public class Window1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
@@ -621,5 +655,6 @@ public class Window1 extends javax.swing.JFrame {
     protected static volatile javax.swing.JLabel sdxl;
     private javax.swing.JLabel start_button;
     protected static volatile javax.swing.JLabel touch;
+    private javax.swing.JLabel txt_button;
     // End of variables declaration//GEN-END:variables
 }
