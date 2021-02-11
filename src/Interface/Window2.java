@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Stefani
@@ -18,11 +21,66 @@ public class Window2 extends javax.swing.JFrame {
     public Window2(Window1 w1) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.w1 = w1;
-        this.w1.setVisible(false);
+        Window2.w1 = w1;
+        Window2.w1.setVisible(false);
+        this.seconds_of_a_day.setText(Integer.toString(Window1.seconds_of_a_day));
+        this.days_between_shipments.setText(Integer.toString(Window1.days_between_shipments));
+        this.maximum_button_capacity.setText(Integer.toString(Window1.maximum_button_capacity));
+        this.maximum_joystick_capacity.setText(Integer.toString(Window1.maximum_joystick_capacity));
+        this.maximum_screen_capacity.setText(Integer.toString(Window1.maximum_screen_capacity));
+        this.maximum_sdreader_capacity.setText(Integer.toString(Window1.maximum_sdreader_capacity));
+        this.initial_button_producers.setText(Integer.toString(Window1.initial_button_producers));
+        this.initial_joystick_producers.setText(Integer.toString(Window1.initial_joystick_producers));
+        this.initial_screen_producers.setText(Integer.toString(Window1.initial_screen_producers));
+        this.initial_sdreader_producers.setText(Integer.toString(Window1.initial_sdreader_producers));
+        this.max_button_producers.setText(Integer.toString(Window1.max_button_producers));
+        this.max_joystick_producers.setText(Integer.toString(Window1.max_joystick_producers));
+        this.max_screen_producers.setText(Integer.toString(Window1.max_screen_producers));
+        this.max_sdreader_producers.setText(Integer.toString(Window1.max_sdreader_producers));
+        this.initial_assemblers.setText(Integer.toString(Window1.initial_assemblers));
+        this.max_assemblers.setText(Integer.toString(Window1.max_assemblers));
+        Window2.w1.setVisible(false);
         this.setVisible(true);
     }
     
+    public boolean isNumeric(String string){
+        try {
+            Integer.parseInt(string);
+            return true;
+	}catch (NumberFormatException e){
+            return false;
+	}
+    }
+    
+    public void write_txt(){
+        try {
+            String data =   "Time in seconds of a day:" + seconds_of_a_day.getText() + "\n" +
+                            "Number of days between shipments:" + days_between_shipments.getText() + "\n" +
+                            "Button storage maximum capacity:" + maximum_button_capacity.getText() + "\n" +
+                            "Joystick storage maximum capacity:" + maximum_joystick_capacity.getText() + "\n" +
+                            "Screen storage maximum capacity:" + maximum_screen_capacity.getText() + "\n" +
+                            "SD reader storage maximum capacity:" + maximum_sdreader_capacity.getText() + "\n" +
+                            "Initial number of button producers:" + initial_button_producers.getText() + "\n" +
+                            "Initial number of joystick producers:" + initial_joystick_producers.getText() + "\n" +
+                            "Initial number of screen producers:" + initial_screen_producers.getText() + "\n" +
+                            "Initial number of SD reader producers:" + initial_sdreader_producers.getText() + "\n" +
+                            "Maximum button producers:" + max_button_producers.getText() + "\n" +
+                            "Maximum joystick producers:" + max_joystick_producers.getText() + "\n" +
+                            "Maximum screen producers:" + max_screen_producers.getText() + "\n" +
+                            "Maximum SD reader producers:" + max_sdreader_producers.getText() + "\n" +
+                            "Initial number of assemblers:" + initial_assemblers.getText() + "\n" +
+                            "Maximum number of assemblers:" + max_assemblers.getText();
+            
+            PrintWriter pw = new PrintWriter("test\\nintendo.txt");
+            pw.print(data);
+            pw.close();
+            JOptionPane.showMessageDialog(null, "Save successful! At the next program initialization, the changes will be applied.");
+            
+            }catch (Exception err) {
+                JOptionPane.showMessageDialog(this, "Sorry, there was a save error. The values ​​will be reset.");
+        }
+        
+    }
     
 
     /**
@@ -36,37 +94,37 @@ public class Window2 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        seconds_of_a_day = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        days_between_shipments = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        maximum_button_capacity = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        maximum_joystick_capacity = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        maximum_screen_capacity = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        maximum_sdreader_capacity = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        initial_button_producers = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        initial_joystick_producers = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        initial_screen_producers = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        initial_sdreader_producers = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        max_button_producers = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        max_joystick_producers = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        max_screen_producers = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        max_sdreader_producers = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        initial_assemblers = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        max_assemblers = new javax.swing.JTextField();
         back_button = new javax.swing.JLabel();
         save_button = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
@@ -82,177 +140,177 @@ public class Window2 extends javax.swing.JFrame {
         jLabel1.setText("Time in seconds of a day:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        seconds_of_a_day.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                seconds_of_a_dayActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 50, -1));
+        jPanel1.add(seconds_of_a_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 50, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Number of days between shipments:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        days_between_shipments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                days_between_shipmentsActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 50, -1));
+        jPanel1.add(days_between_shipments, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 50, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Button storage maximum capacity:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        maximum_button_capacity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                maximum_button_capacityActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 50, -1));
+        jPanel1.add(maximum_button_capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 50, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Joystick storage maximum capacity:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        maximum_joystick_capacity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                maximum_joystick_capacityActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 50, -1));
+        jPanel1.add(maximum_joystick_capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 50, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Screen storage maximum capacity:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        maximum_screen_capacity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                maximum_screen_capacityActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 50, -1));
+        jPanel1.add(maximum_screen_capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 50, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("SD reader storage maximum capacity:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        maximum_sdreader_capacity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                maximum_sdreader_capacityActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 50, -1));
+        jPanel1.add(maximum_sdreader_capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 50, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Initial number of button producers:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        initial_button_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                initial_button_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 50, -1));
+        jPanel1.add(initial_button_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 50, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Initial number of joystick producers:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        initial_joystick_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                initial_joystick_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 50, -1));
+        jPanel1.add(initial_joystick_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 50, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Initial number of screen producers:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        initial_screen_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                initial_screen_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 50, -1));
+        jPanel1.add(initial_screen_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 50, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Initial number of SD reader producers:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        initial_sdreader_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                initial_sdreader_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 50, -1));
+        jPanel1.add(initial_sdreader_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 50, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Maximum button producers:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        max_button_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                max_button_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 50, -1));
+        jPanel1.add(max_button_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 50, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Maximum joystick producers:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
 
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        max_joystick_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                max_joystick_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 50, -1));
+        jPanel1.add(max_joystick_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 50, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel13.setText("Maximum screen producers:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
 
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        max_screen_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                max_screen_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 50, -1));
+        jPanel1.add(max_screen_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 50, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setText("Maximum SD reader producers:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, -1, -1));
 
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        max_sdreader_producers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                max_sdreader_producersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 50, -1));
+        jPanel1.add(max_sdreader_producers, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 50, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setText("Initial number of assemblers:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        initial_assemblers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                initial_assemblersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 50, -1));
+        jPanel1.add(initial_assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 50, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel16.setText("Maximum number of assemblers:");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        max_assemblers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                max_assemblersActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 50, -1));
+        jPanel1.add(max_assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 50, -1));
 
         back_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
         back_button.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -280,6 +338,35 @@ public class Window2 extends javax.swing.JFrame {
 
     private void save_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_save_buttonMouseClicked
         // TODO add your handling code here:
+        if (    isNumeric(seconds_of_a_day.getText()) && isNumeric(days_between_shipments.getText()) &&
+                isNumeric(maximum_button_capacity.getText()) && isNumeric(maximum_joystick_capacity.getText()) &&
+                isNumeric(maximum_screen_capacity.getText()) && isNumeric(maximum_sdreader_capacity.getText()) &&
+                isNumeric(initial_button_producers.getText()) && isNumeric(initial_joystick_producers.getText()) &&
+                isNumeric(initial_screen_producers.getText()) && isNumeric(initial_sdreader_producers.getText()) &&
+                isNumeric(max_button_producers.getText()) && isNumeric(max_joystick_producers.getText()) &&
+                isNumeric(max_screen_producers.getText()) && isNumeric(max_sdreader_producers.getText()) &&
+                isNumeric(initial_assemblers.getText()) && isNumeric(max_assemblers.getText())) {
+            
+            if (    Integer.parseInt(seconds_of_a_day.getText()) >= 1 && Integer.parseInt(days_between_shipments.getText()) >= 1 &&
+                    Integer.parseInt(maximum_button_capacity.getText()) >= 1 && Integer.parseInt(maximum_joystick_capacity.getText()) >= 1 &&
+                    Integer.parseInt(maximum_screen_capacity.getText()) >= 1 && Integer.parseInt(maximum_sdreader_capacity.getText()) >= 1 &&
+                    Integer.parseInt(initial_button_producers.getText()) >= 1 && Integer.parseInt(initial_joystick_producers.getText()) >= 1 &&
+                    Integer.parseInt(initial_screen_producers.getText()) >= 1 && Integer.parseInt(initial_sdreader_producers.getText()) >= 1 &&
+                    Integer.parseInt(max_button_producers.getText()) >= 1 && Integer.parseInt(max_joystick_producers.getText()) >= 1 &&
+                    Integer.parseInt(max_screen_producers.getText()) >= 1 && Integer.parseInt(max_sdreader_producers.getText()) >= 1 &&
+                    Integer.parseInt(initial_assemblers.getText()) >= 1 && Integer.parseInt(max_assemblers.getText()) >= 1) {
+                
+                write_txt();
+                w1.setVisible(true);
+                this.dispose();
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "Please review the information you entered. They must be integers greater than 0.");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Please review the information you entered. They must be integers greater than 0.");
+        }
     }//GEN-LAST:event_save_buttonMouseClicked
 
     private void back_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_buttonMouseClicked
@@ -288,69 +375,69 @@ public class Window2 extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_back_buttonMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void seconds_of_a_dayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seconds_of_a_dayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_seconds_of_a_dayActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void days_between_shipmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_days_between_shipmentsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_days_between_shipmentsActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void maximum_button_capacityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maximum_button_capacityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_maximum_button_capacityActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void maximum_joystick_capacityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maximum_joystick_capacityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_maximum_joystick_capacityActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void maximum_screen_capacityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maximum_screen_capacityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_maximum_screen_capacityActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void maximum_sdreader_capacityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maximum_sdreader_capacityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_maximum_sdreader_capacityActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void initial_button_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initial_button_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_initial_button_producersActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void initial_joystick_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initial_joystick_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_initial_joystick_producersActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void initial_screen_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initial_screen_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_initial_screen_producersActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void initial_sdreader_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initial_sdreader_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_initial_sdreader_producersActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void max_button_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_max_button_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_max_button_producersActionPerformed
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+    private void max_joystick_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_max_joystick_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
+    }//GEN-LAST:event_max_joystick_producersActionPerformed
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void max_screen_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_max_screen_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_max_screen_producersActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void max_sdreader_producersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_max_sdreader_producersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_max_sdreader_producersActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void initial_assemblersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initial_assemblersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_initial_assemblersActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void max_assemblersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_max_assemblersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_max_assemblersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +477,12 @@ public class Window2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JLabel back_button;
+    private javax.swing.JTextField days_between_shipments;
+    private javax.swing.JTextField initial_assemblers;
+    private javax.swing.JTextField initial_button_producers;
+    private javax.swing.JTextField initial_joystick_producers;
+    private javax.swing.JTextField initial_screen_producers;
+    private javax.swing.JTextField initial_sdreader_producers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -407,22 +500,16 @@ public class Window2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField max_assemblers;
+    private javax.swing.JTextField max_button_producers;
+    private javax.swing.JTextField max_joystick_producers;
+    private javax.swing.JTextField max_screen_producers;
+    private javax.swing.JTextField max_sdreader_producers;
+    private javax.swing.JTextField maximum_button_capacity;
+    private javax.swing.JTextField maximum_joystick_capacity;
+    private javax.swing.JTextField maximum_screen_capacity;
+    private javax.swing.JTextField maximum_sdreader_capacity;
     private javax.swing.JLabel save_button;
+    private javax.swing.JTextField seconds_of_a_day;
     // End of variables declaration//GEN-END:variables
 }

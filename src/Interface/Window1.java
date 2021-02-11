@@ -49,6 +49,22 @@ public class Window1 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         flag = true;
+        seconds_of_a_day = 24;
+        days_between_shipments = 30;
+        maximum_button_capacity = 45;
+        maximum_joystick_capacity = 20;
+        maximum_screen_capacity = 40;
+        maximum_sdreader_capacity = 15;
+        initial_button_producers = 1;
+        initial_joystick_producers = 1;
+        initial_screen_producers = 1;
+        initial_sdreader_producers = 1;
+        max_button_producers = 3;
+        max_joystick_producers = 4;
+        max_screen_producers = 5;
+        max_sdreader_producers = 4;
+        initial_assemblers = 1;
+        max_assemblers = 5;
         this.setVisible(true);
         
     }
@@ -529,6 +545,7 @@ public class Window1 extends javax.swing.JFrame {
 
     private void txt_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_buttonMouseClicked
         // TODO add your handling code here:
+        Window2 w2 = new Window2(this);
     }//GEN-LAST:event_txt_buttonMouseClicked
 
     /**

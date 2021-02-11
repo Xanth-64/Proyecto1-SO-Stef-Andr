@@ -1,0 +1,16 @@
+Time in seconds of a day:24
+Number of days between shipments:30
+Button storage maximum capacity:45
+Joystick storage maximum capacity:20
+Screen storage maximum capacity:40
+SD reader storage maximum capacity:15
+Initial number of button producers:1
+Initial number of joystick producers:1
+Initial number of screen producers:1
+Initial number of SD reader producers:1
+Maximum button producers:3
+Maximum joystick producers:4
+Maximum screen producers:5
+Maximum SD reader producers:4
+Initial number of assemblers:1
+Maximum number of assemblers:5
