@@ -11,6 +11,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
+import Classes.Assembler;
+import Classes.ButtProducer;
+import Classes.Gerente;
+import Classes.Jefe;
+import Classes.JoyProducer;
+import Classes.Limit;
+import Classes.RdProducer;
+import Classes.ScrProducer;
+import Classes.Storage;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -20,12 +30,12 @@ public class Window1 extends javax.swing.JFrame {
     
     
     public static volatile int timeInterval;
-    public static volatile int maxJoy;
-    public static volatile int maxScr;
-    public static volatile int maxButt;
-    public static volatile int maxRd;
+    public static volatile Limit companyLimit;
     public static volatile Storage companyStorage;
-    
+    public static volatile int contador;
+    public static volatile Semaphore semaforoContador;
+    public static volatile int limiteContador;
+
     //Block start
     public static boolean flag;
     
@@ -202,63 +212,63 @@ public class Window1 extends javax.swing.JFrame {
         }
     }
     
-    public javax.swing.JLabel getButtons() {
+    public static javax.swing.JLabel getButtons() {
         return buttons;
     }
     
-    public javax.swing.JLabel getButton_producers() {
+    public static javax.swing.JLabel getButton_producers() {
         return button_producers;
     }
     
-    public javax.swing.JLabel getJoysticks() {
+    public static javax.swing.JLabel getJoysticks() {
         return joysticks;
     }
     
-    public javax.swing.JLabel getJoysticks_producers() {
+    public static javax.swing.JLabel getJoysticks_producers() {
         return joysticks_producers;
     }
     
-    public javax.swing.JLabel getScreens() {
+    public static javax.swing.JLabel getScreens() {
         return screens;
     }
     
-    public javax.swing.JLabel getTouch() {
+    public static javax.swing.JLabel getTouch() {
         return touch;
     }
     
-    public javax.swing.JLabel getScreen_producers() {
+    public static javax.swing.JLabel getScreen_producers() {
         return screen_producers;
     }
     
-    public javax.swing.JLabel getSD_readers() {
+    public static javax.swing.JLabel getSD_readers() {
         return sd_readers;
     }
     
-    public javax.swing.JLabel getSD_reader_producers() {
+    public static javax.swing.JLabel getSD_reader_producers() {
         return sd_reader_producers;
     }
     
-    public javax.swing.JLabel getSDXL() {
+    public static javax.swing.JLabel getSDXL() {
         return sdxl;
     }
     
-    public javax.swing.JLabel getDays_passed() {
+    public static javax.swing.JLabel getDays_passed() {
         return days_passed;
     }
     
-    public javax.swing.JLabel getRemaining_days() {
+    public static javax.swing.JLabel getRemaining_days() {
         return remaining_days;
     }
 
-    public javax.swing.JLabel getAssemblers() {
+    public static javax.swing.JLabel getAssemblers() {
         return assemblers;
     }
 
-    public javax.swing.JLabel getBoss_status() {
+    public static javax.swing.JLabel getBoss_status() {
         return boss_status;
     }
 
-    public javax.swing.JLabel getManager_status() {
+    public static javax.swing.JLabel getManager_status() {
         return manager_status;
     }
 
@@ -614,7 +624,7 @@ public class Window1 extends javax.swing.JFrame {
 
         remaining_days.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         remaining_days.setText("0");
-        GoLive.add(remaining_days, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
+        GoLive.add(remaining_days, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 20, -1));
 
         jLabel40.setText("Remaining days:");
         GoLive.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
@@ -668,6 +678,39 @@ public class Window1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (flag) {
             flag = false;
+            timeInterval = (seconds_of_a_day/24)*1000; //timeInterval = (seconds_of_a_day/24)*1000;
+            limiteContador = days_between_shipments; //limiteContador = 5;
+            semaforoContador = new Semaphore(1,true);
+            contador = 0;
+            companyLimit = new Limit(maximum_screen_capacity,maximum_button_capacity,maximum_joystick_capacity,maximum_sdreader_capacity); //companyLimit = new Limit(20,20,20,20);
+            companyStorage = new Storage(0,0,0,0,0,0);
+
+            Gerente bob = new Gerente();
+            Jefe john = new Jefe();
+
+            ButtProducer Butt = new ButtProducer();
+            JoyProducer Joy = new JoyProducer();
+            RdProducer Rd = new RdProducer();
+            ScrProducer Scr = new ScrProducer();
+            Assembler Ass = new Assembler();
+
+            Thread A1 = new Thread(Butt);
+            Thread A2 = new Thread(Joy);
+            Thread A3 = new Thread(Rd);
+            Thread A4 = new Thread(Scr);
+            Thread A5 = new Thread(Ass);
+
+            Thread G1 = new Thread(bob);
+            Thread J1 = new Thread(john);
+
+            J1.start();
+            G1.start();
+
+            A1.start();
+            A2.start();
+            A3.start();
+            A4.start();
+            A5.start();
             
         }else{
             JOptionPane.showMessageDialog(this, "Production has already started.");
@@ -711,19 +754,10 @@ public class Window1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                timeInterval = 1;
-                companyStorage = new Storage(20,51,20,20,20,0);
+  
                 new Window1().setVisible(true);
                 
-                Assembler A1 = new Assembler();
-                Assembler A2 = new Assembler();
-                A1.name = "A1";
-                A2.name = "A2";
-                
-                Thread T1 = new Thread(A1);
-                Thread T2 = new Thread(A2);
-                T1.start();
-                T2.start();
+ 
             }
         });
     }
