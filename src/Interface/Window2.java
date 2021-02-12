@@ -53,27 +53,68 @@ public class Window2 extends javax.swing.JFrame {
     
     public void write_txt(){
         try {
-            String data =   "Time in seconds of a day:" + seconds_of_a_day.getText() + "\n" +
-                            "Number of days between shipments:" + days_between_shipments.getText() + "\n" +
-                            "Button storage maximum capacity:" + maximum_button_capacity.getText() + "\n" +
-                            "Joystick storage maximum capacity:" + maximum_joystick_capacity.getText() + "\n" +
-                            "Screen storage maximum capacity:" + maximum_screen_capacity.getText() + "\n" +
-                            "SD reader storage maximum capacity:" + maximum_sdreader_capacity.getText() + "\n" +
-                            "Initial number of button producers:" + initial_button_producers.getText() + "\n" +
-                            "Initial number of joystick producers:" + initial_joystick_producers.getText() + "\n" +
-                            "Initial number of screen producers:" + initial_screen_producers.getText() + "\n" +
-                            "Initial number of SD reader producers:" + initial_sdreader_producers.getText() + "\n" +
-                            "Maximum button producers:" + max_button_producers.getText() + "\n" +
-                            "Maximum joystick producers:" + max_joystick_producers.getText() + "\n" +
-                            "Maximum screen producers:" + max_screen_producers.getText() + "\n" +
-                            "Maximum SD reader producers:" + max_sdreader_producers.getText() + "\n" +
-                            "Initial number of assemblers:" + initial_assemblers.getText() + "\n" +
-                            "Maximum number of assemblers:" + max_assemblers.getText();
+            String data = "";
+            if (    Integer.parseInt(seconds_of_a_day.getText()) >= 1 &&
+                    Integer.parseInt(initial_button_producers.getText()) >= 1 &&
+                    Integer.parseInt(initial_joystick_producers.getText()) >= 1 &&
+                    Integer.parseInt(initial_screen_producers.getText()) >= 1 &&
+                    Integer.parseInt(initial_sdreader_producers.getText()) >= 1 &&
+                    Integer.parseInt(initial_assemblers.getText()) >= 1 &&
+                    Integer.parseInt(days_between_shipments.getText()) >= 6 && 
+                    Integer.parseInt(maximum_button_capacity.getText()) >= 5 &&
+                    Integer.parseInt(maximum_joystick_capacity.getText()) >= 2 &&
+                    Integer.parseInt(maximum_screen_capacity.getText()) >= 2 &&
+                    Integer.parseInt(maximum_sdreader_capacity.getText()) >= 1 &&
+                    Integer.parseInt(initial_button_producers.getText()) <= Integer.parseInt(max_button_producers.getText()) && 
+                    Integer.parseInt(initial_joystick_producers.getText()) <= Integer.parseInt(max_joystick_producers.getText()) &&
+                    Integer.parseInt(initial_screen_producers.getText()) <= Integer.parseInt(max_screen_producers.getText()) &&
+                    Integer.parseInt(initial_sdreader_producers.getText()) <= Integer.parseInt(max_sdreader_producers.getText()) &&
+                    Integer.parseInt(initial_assemblers.getText()) <= Integer.parseInt(max_assemblers.getText())) {
+                
+                data =   "Time in seconds of a day:" + seconds_of_a_day.getText() + "\n" +
+                                "Number of days between shipments:" + days_between_shipments.getText() + "\n" +
+                                "Button storage maximum capacity:" + maximum_button_capacity.getText() + "\n" +
+                                "Joystick storage maximum capacity:" + maximum_joystick_capacity.getText() + "\n" +
+                                "Screen storage maximum capacity:" + maximum_screen_capacity.getText() + "\n" +
+                                "SD reader storage maximum capacity:" + maximum_sdreader_capacity.getText() + "\n" +
+                                "Initial number of button producers:" + initial_button_producers.getText() + "\n" +
+                                "Initial number of joystick producers:" + initial_joystick_producers.getText() + "\n" +
+                                "Initial number of screen producers:" + initial_screen_producers.getText() + "\n" +
+                                "Initial number of SD reader producers:" + initial_sdreader_producers.getText() + "\n" +
+                                "Maximum button producers:" + max_button_producers.getText() + "\n" +
+                                "Maximum joystick producers:" + max_joystick_producers.getText() + "\n" +
+                                "Maximum screen producers:" + max_screen_producers.getText() + "\n" +
+                                "Maximum SD reader producers:" + max_sdreader_producers.getText() + "\n" +
+                                "Initial number of assemblers:" + initial_assemblers.getText() + "\n" +
+                                "Maximum number of assemblers:" + max_assemblers.getText();
+                JOptionPane.showMessageDialog(null, "Save successful! At the next program initialization, the changes will be applied.");
+                
+            }else{
+                data =   "Time in seconds of a day:" + 24 + "\n" +
+                                "Number of days between shipments:" + 30 + "\n" +
+                                "Button storage maximum capacity:" + 45 + "\n" +
+                                "Joystick storage maximum capacity:" + 20 + "\n" +
+                                "Screen storage maximum capacity:" + 40 + "\n" +
+                                "SD reader storage maximum capacity:" + 15 + "\n" +
+                                "Initial number of button producers:" + 1 + "\n" +
+                                "Initial number of joystick producers:" + 1 + "\n" +
+                                "Initial number of screen producers:" + 1 + "\n" +
+                                "Initial number of SD reader producers:" + 1 + "\n" +
+                                "Maximum button producers:" + 3 + "\n" +
+                                "Maximum joystick producers:" + 4 + "\n" +
+                                "Maximum screen producers:" + 5 + "\n" +
+                                "Maximum SD reader producers:" + 4 + "\n" +
+                                "Initial number of assemblers:" + 1 + "\n" +
+                                "Maximum number of assemblers:" + 5;
+                JOptionPane.showMessageDialog(null, "Remember that the minimums cannot be greater than the maximums.\n"
+                                                            + "The capacity must allow a minimum of 5 buttons, 2 screens, 2 joysticks and 1 SD reader.\n"
+                                                            + "In addition, there must be a minimum of 6 days between shipments.\n"
+                                                            + "The values ​​will be reset.");
+            }
             
             PrintWriter pw = new PrintWriter("test\\nintendo.txt");
             pw.print(data);
             pw.close();
-            JOptionPane.showMessageDialog(null, "Save successful! At the next program initialization, the changes will be applied.");
             
             }catch (Exception err) {
                 JOptionPane.showMessageDialog(this, "Sorry, there was a save error. The values ​​will be reset.");

@@ -130,9 +130,17 @@ public class Window1 extends javax.swing.JFrame {
                             max_assemblers = Integer.parseInt(data[1]);
                         }
                     }
-                    if (    days_between_shipments >= 6 && 
-                            maximum_button_capacity >= 5 && maximum_joystick_capacity >= 2 &&
-                            maximum_screen_capacity >= 2 && maximum_sdreader_capacity >= 1 &&
+                    if (    seconds_of_a_day >= 1 &&
+                            initial_button_producers >= 1 &&
+                            initial_joystick_producers >= 1 &&
+                            initial_screen_producers >= 1 &&
+                            initial_sdreader_producers >= 1 &&
+                            initial_assemblers >= 1 &&
+                            days_between_shipments >= 6 && 
+                            maximum_button_capacity >= 5 &&
+                            maximum_joystick_capacity >= 2 &&
+                            maximum_screen_capacity >= 2 &&
+                            maximum_sdreader_capacity >= 1 &&
                             initial_button_producers <= max_button_producers && 
                             initial_joystick_producers <= max_joystick_producers &&
                             initial_screen_producers <= max_screen_producers &&
