@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interface;
 
 import java.io.BufferedReader;
@@ -17,15 +13,13 @@ import Classes.Gerente;
 import Classes.Jefe;
 import Classes.JoyProducer;
 import Classes.Limit;
+import Classes.Nodo;
 import Classes.RdProducer;
 import Classes.ScrProducer;
+import Classes.Stack;
 import Classes.Storage;
 import java.util.concurrent.Semaphore;
 
-/**
- *
- * @author Xanth
- */
 public class Window1 extends javax.swing.JFrame {
     
     
@@ -56,6 +50,13 @@ public class Window1 extends javax.swing.JFrame {
     public static int max_sdreader_producers;
     public static int initial_assemblers;
     public static int max_assemblers;
+    
+    //Stacks
+    public static Stack buttProducerStack;
+    public static Stack joyProducerStack;
+    public static Stack rdProducerStack;
+    public static Stack scrProducerStack;
+    public static Stack assemblerStack;
     
     /**
      * Creates new form Window1
@@ -179,6 +180,14 @@ public class Window1 extends javax.swing.JFrame {
                                                             + "In addition, there must be a minimum of 6 days between shipments.\n"
                                                             + "The values ​​will be reset.");
                     }
+                    
+                    Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
+                    Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
+                    Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
+                    Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
+                    Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
+                    Window1.getRemaining_days().setText(Integer.toString(days_between_shipments));
+                    
                 }
                 br.close();
             }
@@ -201,6 +210,29 @@ public class Window1 extends javax.swing.JFrame {
                             "Maximum SD reader producers:" + 4 + "\n" +
                             "Initial number of assemblers:" + 1 + "\n" +
                             "Maximum number of assemblers:" + 5;
+            seconds_of_a_day = 24;
+            days_between_shipments = 30;
+            maximum_button_capacity = 45;
+            maximum_joystick_capacity = 20;
+            maximum_screen_capacity = 40;
+            maximum_sdreader_capacity = 15;
+            initial_button_producers = 1;
+            initial_joystick_producers = 1;
+            initial_screen_producers = 1;
+            initial_sdreader_producers = 1;
+            max_button_producers = 3;
+            max_joystick_producers = 4;
+            max_screen_producers = 5;
+            max_sdreader_producers = 4;
+            initial_assemblers = 1;
+            max_assemblers = 5;
+            
+            Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
+            Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
+            Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
+            Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
+            Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
+            Window1.getRemaining_days().setText(Integer.toString(days_between_shipments));
             
             PrintWriter pw = new PrintWriter("test\\nintendo.txt");
             pw.print(data);
@@ -209,7 +241,10 @@ public class Window1 extends javax.swing.JFrame {
             }catch (Exception err) {
                 JOptionPane.showMessageDialog(this, "Sorry, there was a save error.");
             }
+            
+            
         }
+        
     }
     
     public static javax.swing.JLabel getButtons() {
@@ -387,9 +422,19 @@ public class Window1 extends javax.swing.JFrame {
         ButtonProducers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add_button_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        add_button_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_button_producerMouseClicked(evt);
+            }
+        });
         ButtonProducers.add(add_button_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 40));
 
         delete_button_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        delete_button_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete_button_producerMouseClicked(evt);
+            }
+        });
         ButtonProducers.add(delete_button_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
 
         button_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -427,6 +472,11 @@ public class Window1 extends javax.swing.JFrame {
         JoystickProducers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add_joystick_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        add_joystick_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_joystick_producerMouseClicked(evt);
+            }
+        });
         JoystickProducers.add(add_joystick_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 40));
 
         joysticks_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -438,6 +488,11 @@ public class Window1 extends javax.swing.JFrame {
         JoystickProducers.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 70, 80));
 
         delete_joystick_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        delete_joystick_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete_joystick_producerMouseClicked(evt);
+            }
+        });
         JoystickProducers.add(delete_joystick_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
 
         JoystickProduction.addTab("Producers", JoystickProducers);
@@ -482,6 +537,11 @@ public class Window1 extends javax.swing.JFrame {
         ScreedProducers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add_screen_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        add_screen_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_screen_producerMouseClicked(evt);
+            }
+        });
         ScreedProducers.add(add_screen_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 40));
 
         screen_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -493,6 +553,16 @@ public class Window1 extends javax.swing.JFrame {
         ScreedProducers.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 70, 80));
 
         delete_screen_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        delete_screen_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete_screen_producerMouseClicked(evt);
+            }
+        });
+        delete_screen_producer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                delete_screen_producerKeyPressed(evt);
+            }
+        });
         ScreedProducers.add(delete_screen_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, 40));
 
         ScreenProduction.addTab("Producers", ScreedProducers);
@@ -521,6 +591,11 @@ public class Window1 extends javax.swing.JFrame {
         SDRProducers1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add_sdreaders_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        add_sdreaders_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_sdreaders_producerMouseClicked(evt);
+            }
+        });
         SDRProducers1.add(add_sdreaders_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 40));
 
         sd_reader_producers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -532,6 +607,11 @@ public class Window1 extends javax.swing.JFrame {
         SDRProducers1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 70, 80));
 
         delete_sdreaders_producer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        delete_sdreaders_producer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete_sdreaders_producerMouseClicked(evt);
+            }
+        });
         SDRProducers1.add(delete_sdreaders_producer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
 
         SDReaderProduction.addTab("Producers", SDRProducers1);
@@ -549,12 +629,22 @@ public class Window1 extends javax.swing.JFrame {
         Assemblers.add(assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 60, 70));
 
         delete_assembler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/minus.png"))); // NOI18N
+        delete_assembler.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete_assemblerMouseClicked(evt);
+            }
+        });
         Assemblers.add(delete_assembler, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, 40));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/teamwork.png"))); // NOI18N
         Assemblers.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 70, 80));
 
         add_assembler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        add_assembler.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_assemblerMouseClicked(evt);
+            }
+        });
         Assemblers.add(add_assembler, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 40));
 
         Employees.addTab("Assemblers", Assemblers);
@@ -688,29 +778,52 @@ public class Window1 extends javax.swing.JFrame {
             Gerente bob = new Gerente();
             Jefe john = new Jefe();
 
-            ButtProducer Butt = new ButtProducer();
-            JoyProducer Joy = new JoyProducer();
-            RdProducer Rd = new RdProducer();
-            ScrProducer Scr = new ScrProducer();
-            Assembler Ass = new Assembler();
-
-            Thread A1 = new Thread(Butt);
-            Thread A2 = new Thread(Joy);
-            Thread A3 = new Thread(Rd);
-            Thread A4 = new Thread(Scr);
-            Thread A5 = new Thread(Ass);
-
             Thread G1 = new Thread(bob);
             Thread J1 = new Thread(john);
 
             J1.start();
             G1.start();
-
-            A1.start();
-            A2.start();
-            A3.start();
-            A4.start();
-            A5.start();
+            
+            buttProducerStack = new Stack();           
+            for (int i = 0; i < initial_button_producers; i++) {
+                ButtProducer Butt = new ButtProducer();
+                Thread thread = new Thread(Butt);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                buttProducerStack.push(nodo);
+            }
+            joyProducerStack = new Stack();           
+            for (int i = 0; i < initial_joystick_producers; i++) {
+                JoyProducer Joy = new JoyProducer();
+                Thread thread = new Thread(Joy);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                joyProducerStack.push(nodo);
+            }
+            rdProducerStack = new Stack();           
+            for (int i = 0; i < initial_sdreader_producers; i++) {
+                RdProducer Rd = new RdProducer();
+                Thread thread = new Thread(Rd);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                rdProducerStack.push(nodo);
+            }
+            scrProducerStack = new Stack();           
+            for (int i = 0; i < initial_screen_producers; i++) {
+                ScrProducer Scr = new ScrProducer();
+                Thread thread = new Thread(Scr);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                scrProducerStack.push(nodo);
+            }
+            assemblerStack = new Stack();           
+            for (int i = 0; i < initial_assemblers; i++) {
+                Assembler Ass = new Assembler();
+                Thread thread = new Thread(Ass);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                assemblerStack.push(nodo);
+            }
             
         }else{
             JOptionPane.showMessageDialog(this, "Production has already started.");
@@ -721,6 +834,254 @@ public class Window1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         Window2 w2 = new Window2(this);
     }//GEN-LAST:event_txt_buttonMouseClicked
+
+    private void add_button_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_button_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(!(initial_button_producers >= max_button_producers)){
+                initial_button_producers++;
+                Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }else{
+            if (!(initial_button_producers >= max_button_producers)) {
+                initial_button_producers++;
+                Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+                ButtProducer Butt = new ButtProducer();
+                Thread thread = new Thread(Butt);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                buttProducerStack.push(nodo);
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }
+    }//GEN-LAST:event_add_button_producerMouseClicked
+
+    private void add_screen_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_screen_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(!(initial_screen_producers >= max_screen_producers)){
+                initial_screen_producers++;
+                Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }else{
+            if (!(initial_screen_producers >= max_screen_producers)) {
+                initial_screen_producers++;
+                Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+                ScrProducer Scr = new ScrProducer();
+                Thread thread = new Thread(Scr);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                scrProducerStack.push(nodo);
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }
+    }//GEN-LAST:event_add_screen_producerMouseClicked
+
+    private void add_sdreaders_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_sdreaders_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(!(initial_sdreader_producers >= max_sdreader_producers)){
+                initial_sdreader_producers++;
+                Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }else{
+            if (!(initial_sdreader_producers >= max_sdreader_producers)) {
+                initial_sdreader_producers++;
+                Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+                RdProducer Rd = new RdProducer();
+                Thread thread = new Thread(Rd);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                rdProducerStack.push(nodo);
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }
+    }//GEN-LAST:event_add_sdreaders_producerMouseClicked
+
+    private void add_assemblerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_assemblerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(!(initial_assemblers >= max_assemblers)){
+                initial_assemblers++;
+                Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }else{
+            if (!(initial_assemblers >= max_assemblers)) {
+                initial_assemblers++;
+                Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+                Assembler Ass = new Assembler();
+                Thread thread = new Thread(Ass);
+                thread.start();
+                Nodo nodo = new Nodo(thread);
+                assemblerStack.push(nodo);
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }
+    }//GEN-LAST:event_add_assemblerMouseClicked
+
+    private void add_joystick_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_joystick_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(!(initial_joystick_producers >= max_joystick_producers)){
+                initial_joystick_producers++;
+                Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }else{
+            if (!(initial_joystick_producers >= max_joystick_producers)) {
+                initial_joystick_producers++;
+                Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
+                JOptionPane.showMessageDialog(this, "Producer added successfully.");
+                JoyProducer Joy = new JoyProducer();
+                Thread thread = new Thread(Joy);
+                Nodo nodo = new Nodo(thread);
+                joyProducerStack.push(nodo);
+            }else{
+                JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
+            }
+        }
+    }//GEN-LAST:event_add_joystick_producerMouseClicked
+
+    private void delete_button_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_button_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(initial_button_producers >= 2){
+                initial_button_producers--;
+                Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }else{
+            if(initial_button_producers >= 2){
+                initial_button_producers--;
+                Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+                Nodo head = buttProducerStack.getHead();
+                Thread thread = head.getThread();
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }
+    }//GEN-LAST:event_delete_button_producerMouseClicked
+
+    private void delete_joystick_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_joystick_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(initial_joystick_producers >= 2){
+                initial_joystick_producers--;
+                Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }else{
+            if(initial_joystick_producers >= 2){
+                initial_joystick_producers--;
+                Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+                Nodo head = joyProducerStack.getHead();
+                Thread thread = head.getThread();
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }
+    }//GEN-LAST:event_delete_joystick_producerMouseClicked
+
+    private void delete_screen_producerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_delete_screen_producerKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delete_screen_producerKeyPressed
+
+    private void delete_screen_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_screen_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(initial_screen_producers >= 2){
+                initial_screen_producers--;
+                Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }else{
+            if(initial_screen_producers >= 2){
+                initial_screen_producers--;
+                Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+                Nodo head = scrProducerStack.getHead();
+                Thread thread = head.getThread();
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }
+    }//GEN-LAST:event_delete_screen_producerMouseClicked
+
+    private void delete_assemblerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_assemblerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(initial_assemblers >= 2){
+                initial_assemblers--;
+                Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }else{
+            if(initial_assemblers >= 2){
+                initial_assemblers--;
+                Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+                Nodo head = assemblerStack.getHead();
+                Thread thread = head.getThread();
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }
+    }//GEN-LAST:event_delete_assemblerMouseClicked
+
+    private void delete_sdreaders_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_sdreaders_producerMouseClicked
+        // TODO add your handling code here:
+        if (flag) {
+            if(initial_sdreader_producers >= 2){
+                initial_sdreader_producers--;
+                Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }else{
+            if(initial_sdreader_producers >= 2){
+                initial_assemblers--;
+                Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
+                JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
+                Nodo head = rdProducerStack.getHead();
+                Thread thread = head.getThread();
+            }else{
+                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+            }
+        }
+    }//GEN-LAST:event_delete_sdreaders_producerMouseClicked
 
     /**
      * @param args the command line arguments
