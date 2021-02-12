@@ -130,6 +130,37 @@ public class Window1 extends javax.swing.JFrame {
                             max_assemblers = Integer.parseInt(data[1]);
                         }
                     }
+                    if (    days_between_shipments >= 6 && 
+                            maximum_button_capacity >= 5 && maximum_joystick_capacity >= 2 &&
+                            maximum_screen_capacity >= 2 && maximum_sdreader_capacity >= 1 &&
+                            initial_button_producers <= max_button_producers && 
+                            initial_joystick_producers <= max_joystick_producers &&
+                            initial_screen_producers <= max_screen_producers &&
+                            initial_sdreader_producers <= max_sdreader_producers &&
+                            initial_assemblers <= max_assemblers) {
+                        
+                    }else{
+                        seconds_of_a_day = 24;
+                        days_between_shipments = 30;
+                        maximum_button_capacity = 45;
+                        maximum_joystick_capacity = 20;
+                        maximum_screen_capacity = 40;
+                        maximum_sdreader_capacity = 15;
+                        initial_button_producers = 1;
+                        initial_joystick_producers = 1;
+                        initial_screen_producers = 1;
+                        initial_sdreader_producers = 1;
+                        max_button_producers = 3;
+                        max_joystick_producers = 4;
+                        max_screen_producers = 5;
+                        max_sdreader_producers = 4;
+                        initial_assemblers = 1;
+                        max_assemblers = 5;
+                        JOptionPane.showMessageDialog(null, "Remember that the minimums cannot be greater than the maximums.\n"
+                                                            + "The capacity must allow a minimum of 5 buttons, 2 screens, 2 joysticks and 1 SD reader.\n"
+                                                            + "In addition, there must be a minimum of 6 days between shipments.\n"
+                                                            + "The values ​​will be reset.");
+                    }
                 }
                 br.close();
             }
