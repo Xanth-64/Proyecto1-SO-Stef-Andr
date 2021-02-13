@@ -36,7 +36,7 @@ public class Assembler extends Thread {
             this.assembled = false;
             try{
                 Window1.companyStorage.getCurrButt().acquire(5); //Pide 5 botones
-                System.out.println("Se asignaron 5 botones a un ensamblador");
+                //System.out.println("Se asignaron 5 botones a un ensamblador");
                
             }
             catch(InterruptedException e){
@@ -45,7 +45,7 @@ public class Assembler extends Thread {
             if(this.execute){
                 try{
                     Window1.companyStorage.getCurrJoy().acquire(2); //Pide 2 joysticks
-                    System.out.println("Se Asignaron 2 joysticks a un ensamblador");
+                    //System.out.println("Se Asignaron 2 joysticks a un ensamblador");
                 }
                 catch(InterruptedException e){
                     this.execute = false;
@@ -55,7 +55,7 @@ public class Assembler extends Thread {
             if(this.execute){
                 try{
                    Window1.companyStorage.getCurrScrNrm().acquire(); //Pide 1 pantalla normal
-                   System.out.println("Se Asigno una pantalla normal a un ensamblador");
+                   //System.out.println("Se Asigno una pantalla normal a un ensamblador");
                 }
                 catch(InterruptedException e){
                     this.execute = false;
@@ -66,7 +66,7 @@ public class Assembler extends Thread {
             if(this.execute){
                 try{
                     Window1.companyStorage.getCurrScrTch().acquire(); //Pide 1 pantalla tactil
-                    System.out.println("Se Asigno una pantalla tactil a un ensamblador");
+                    //System.out.println("Se Asigno una pantalla tactil a un ensamblador");
                 }
                 catch(InterruptedException e){
                     this.execute = false;
@@ -78,7 +78,7 @@ public class Assembler extends Thread {
             if(this.execute){
                 try{
                     Window1.companyStorage.getCurrRd().acquire(); //Pide 1 SD Reader
-                    System.out.println("Se Asigno un lector de tarjetas a un ensamblador");
+                    //System.out.println("Se Asigno un lector de tarjetas a un ensamblador");
                 }
                 catch(InterruptedException e){
                     this.execute = false;
@@ -105,7 +105,7 @@ public class Assembler extends Thread {
                     Window1.getTouch().setText(Integer.toString(Window1.companyStorage.currScrTch.availablePermits()));
                     Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));
                     Window1.getSDXL().setText(Integer.toString(Window1.companyStorage.consoles.availablePermits()));
-                    System.out.println("Consola Ensamblada! aqui los datos: Consolas: " + Window1.companyStorage.consoles.availablePermits() + " Botones: " + Window1.companyStorage.currButt.availablePermits() + " Palancas: " + Window1.companyStorage.currJoy.availablePermits() + " Lectoras: " + Window1.companyStorage.currRd.availablePermits() + " Pantallas Tactiles: " + Window1.companyStorage.currScrTch.availablePermits() + " Pantallas Normales: " + Window1.companyStorage.currScrNrm.availablePermits() + "\nLimites: Botones: " + Window1.companyLimit.maxButt.availablePermits() + " Pantallas: " + Window1.companyLimit.maxScr.availablePermits() + " Lectoras: " + Window1.companyLimit.maxRd.availablePermits() + " Palancas: " + Window1.companyLimit.maxJoy.availablePermits());
+                    //System.out.println("Consola Ensamblada! aqui los datos: Consolas: " + Window1.companyStorage.consoles.availablePermits() + " Botones: " + Window1.companyStorage.currButt.availablePermits() + " Palancas: " + Window1.companyStorage.currJoy.availablePermits() + " Lectoras: " + Window1.companyStorage.currRd.availablePermits() + " Pantallas Tactiles: " + Window1.companyStorage.currScrTch.availablePermits() + " Pantallas Normales: " + Window1.companyStorage.currScrNrm.availablePermits() + "\nLimites: Botones: " + Window1.companyLimit.maxButt.availablePermits() + " Pantallas: " + Window1.companyLimit.maxScr.availablePermits() + " Lectoras: " + Window1.companyLimit.maxRd.availablePermits() + " Palancas: " + Window1.companyLimit.maxJoy.availablePermits());
                     
                 }
                 catch(InterruptedException e){

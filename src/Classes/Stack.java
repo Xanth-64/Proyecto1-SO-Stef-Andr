@@ -36,7 +36,7 @@ public class Stack {
     
     public void pop(){
         if (this.is_empty()) {
-            JOptionPane.showMessageDialog(null, "The stack is empty.");
+            //JOptionPane.showMessageDialog(null, "The stack is empty.");
         }else{
             setHead(getHead().getNext());
             setSize(getSize() - 1);

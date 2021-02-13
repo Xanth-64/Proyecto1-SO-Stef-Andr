@@ -28,7 +28,7 @@ public class RdProducer extends Thread{
                     Thread.sleep(Window1.timeInterval * 72); //Crear
                     Window1.companyStorage.currRd.release(); //Liberar
                     Window1.getSD_readers().setText(Integer.toString(Window1.companyStorage.currRd.availablePermits()));
-                    System.out.println("Se ha creado 1 lector de tarjetas: " + Window1.companyStorage.currRd.availablePermits() + " Bajando el limite hasta: " + Window1.companyLimit.maxRd.availablePermits());
+                    //System.out.println("Se ha creado 1 lector de tarjetas: " + Window1.companyStorage.currRd.availablePermits() + " Bajando el limite hasta: " + Window1.companyLimit.maxRd.availablePermits());
                 }
                 catch(InterruptedException e){
                     this.execute = false;

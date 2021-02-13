@@ -671,7 +671,7 @@ public class Window1 extends javax.swing.JFrame {
         Manager.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         manager_status.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        manager_status.setText("Working");
+        manager_status.setText("Sleeping");
         Manager.add(manager_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
         jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pikachu (1).png"))); // NOI18N
