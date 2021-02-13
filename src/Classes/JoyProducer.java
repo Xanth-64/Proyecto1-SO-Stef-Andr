@@ -3,7 +3,7 @@ package Classes;
 
 import Interface.Window1;
 
-public class JoyProducer implements Runnable {
+public class JoyProducer extends Thread {
     
     protected boolean execute;
     protected boolean creating;

@@ -3,7 +3,7 @@ package Classes;
 
 import Interface.Window1;
 
-public class Gerente implements Runnable {
+public class Gerente extends Thread {
 
     @Override
     public void run() {

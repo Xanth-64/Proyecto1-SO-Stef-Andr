@@ -3,7 +3,7 @@ package Classes;
 
 import Interface.Window1;
 
-public class RdProducer implements Runnable{
+public class RdProducer extends Thread{
     protected boolean execute;
     protected boolean creating;
 

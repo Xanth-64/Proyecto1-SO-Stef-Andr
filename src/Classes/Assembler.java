@@ -3,7 +3,7 @@ package Classes;
 
 import Interface.Window1;
 
-public class Assembler implements Runnable {
+public class Assembler extends Thread {
    protected boolean execute;
    protected boolean assembled;
    

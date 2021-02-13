@@ -3,7 +3,7 @@ package Classes;
 
 import Interface.Window1;
 
-public class ButtProducer implements Runnable {
+public class ButtProducer extends Thread {
     
     protected boolean execute; //True: con vida. False: muerto
     protected boolean creating;

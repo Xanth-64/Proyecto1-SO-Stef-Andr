@@ -43,19 +43,6 @@ public class Stack {
         }
     }
     
-    public String print(Stack stack, String full_stack, int counter){
-        if (this.is_empty()) {
-            
-        }else{
-            Nodo temporary = getHead();
-            stack.pop();
-            full_stack += "Nodo " + counter + ": " + temporary.getThread() + "\n";
-            counter++;
-            full_stack = print(stack, full_stack, counter);
-            stack.push(temporary);
-        }
-        return full_stack;
-    }
 
     /**
      * @return the head

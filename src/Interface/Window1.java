@@ -787,42 +787,37 @@ public class Window1 extends javax.swing.JFrame {
             buttProducerStack = new Stack();           
             for (int i = 0; i < initial_button_producers; i++) {
                 ButtProducer Butt = new ButtProducer();
-                Thread thread = new Thread(Butt);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
-                buttProducerStack.push(nodo);
+                Butt.start();
+                Nodo ButtNode = new Nodo(Butt);
+                buttProducerStack.push(ButtNode);
             }
             joyProducerStack = new Stack();           
             for (int i = 0; i < initial_joystick_producers; i++) {
                 JoyProducer Joy = new JoyProducer();
-                Thread thread = new Thread(Joy);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
-                joyProducerStack.push(nodo);
+                Joy.start();
+                Nodo JoyNode = new Nodo(Joy);
+                joyProducerStack.push(JoyNode);
             }
             rdProducerStack = new Stack();           
             for (int i = 0; i < initial_sdreader_producers; i++) {
                 RdProducer Rd = new RdProducer();
-                Thread thread = new Thread(Rd);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
-                rdProducerStack.push(nodo);
+                Rd.start();
+                Nodo RdNode = new Nodo(Rd);
+                rdProducerStack.push(RdNode);
             }
             scrProducerStack = new Stack();           
             for (int i = 0; i < initial_screen_producers; i++) {
                 ScrProducer Scr = new ScrProducer();
-                Thread thread = new Thread(Scr);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
-                scrProducerStack.push(nodo);
+                Scr.start();
+                Nodo ScrNode = new Nodo(Scr);
+                scrProducerStack.push(ScrNode);
             }
             assemblerStack = new Stack();           
             for (int i = 0; i < initial_assemblers; i++) {
                 Assembler Ass = new Assembler();
-                Thread thread = new Thread(Ass);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
-                assemblerStack.push(nodo);
+                Ass.start();
+                Nodo AssNode = new Nodo(Ass);
+                assemblerStack.push(AssNode);
             }
             
         }else{
@@ -850,10 +845,9 @@ public class Window1 extends javax.swing.JFrame {
                 initial_button_producers++;
                 Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
                 JOptionPane.showMessageDialog(this, "Producer added successfully.");
-                ButtProducer Butt = new ButtProducer();
-                Thread thread = new Thread(Butt);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
+                ButtProducer Butt = new ButtProducer();   
+                Butt.start();
+                Nodo nodo = new Nodo(Butt);
                 buttProducerStack.push(nodo);
             }else{
                 JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
@@ -877,9 +871,8 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
                 JOptionPane.showMessageDialog(this, "Producer added successfully.");
                 ScrProducer Scr = new ScrProducer();
-                Thread thread = new Thread(Scr);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
+                Scr.start();
+                Nodo nodo = new Nodo(Scr);
                 scrProducerStack.push(nodo);
             }else{
                 JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
@@ -903,9 +896,8 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
                 JOptionPane.showMessageDialog(this, "Producer added successfully.");
                 RdProducer Rd = new RdProducer();
-                Thread thread = new Thread(Rd);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
+                Rd.start();
+                Nodo nodo = new Nodo(Rd);
                 rdProducerStack.push(nodo);
             }else{
                 JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
@@ -929,9 +921,8 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
                 JOptionPane.showMessageDialog(this, "Producer added successfully.");
                 Assembler Ass = new Assembler();
-                Thread thread = new Thread(Ass);
-                thread.start();
-                Nodo nodo = new Nodo(thread);
+                Ass.start();
+                Nodo nodo = new Nodo(Ass);
                 assemblerStack.push(nodo);
             }else{
                 JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
@@ -955,8 +946,8 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
                 JOptionPane.showMessageDialog(this, "Producer added successfully.");
                 JoyProducer Joy = new JoyProducer();
-                Thread thread = new Thread(Joy);
-                Nodo nodo = new Nodo(thread);
+                Joy.start();
+                Nodo nodo = new Nodo(Joy);
                 joyProducerStack.push(nodo);
             }else{
                 JOptionPane.showMessageDialog(this, "The limit of producers has been reached.");
@@ -980,7 +971,14 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
                 Nodo head = buttProducerStack.getHead();
-                Thread thread = head.getThread();
+                if(head.getButt().isCreating()){
+                    head.getButt().setExecute(false);
+                }
+                else{
+                    head.getButt().interrupt();
+                }
+                buttProducerStack.pop();
+                
             }else{
                 JOptionPane.showMessageDialog(this, "There must be at least one producer.");
             }
@@ -1003,7 +1001,13 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
                 Nodo head = joyProducerStack.getHead();
-                Thread thread = head.getThread();
+                if(head.getJoy().isCreating()){
+                    head.getJoy().setExecute(false);
+                }
+                else{
+                    head.getJoy().interrupt();
+                }
+                joyProducerStack.pop();
             }else{
                 JOptionPane.showMessageDialog(this, "There must be at least one producer.");
             }
@@ -1030,7 +1034,13 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
                 Nodo head = scrProducerStack.getHead();
-                Thread thread = head.getThread();
+                if(head.getScr().isCreating()){
+                    head.getScr().setExecute(false);
+                }
+                else{
+                    head.getScr().interrupt();
+                }
+                scrProducerStack.pop();
             }else{
                 JOptionPane.showMessageDialog(this, "There must be at least one producer.");
             }
@@ -1053,7 +1063,13 @@ public class Window1 extends javax.swing.JFrame {
                 Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
                 Nodo head = assemblerStack.getHead();
-                Thread thread = head.getThread();
+                if (head.getAssemble().isAssembled()){
+                    head.getAssemble().setExecute(false);
+                }
+                else{
+                    head.getAssemble().interrupt();
+                }
+                assemblerStack.pop();
             }else{
                 JOptionPane.showMessageDialog(this, "There must be at least one producer.");
             }
@@ -1072,11 +1088,17 @@ public class Window1 extends javax.swing.JFrame {
             }
         }else{
             if(initial_sdreader_producers >= 2){
-                initial_assemblers--;
+                initial_sdreader_producers--;
                 Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
                 Nodo head = rdProducerStack.getHead();
-                Thread thread = head.getThread();
+                if(head.getRd().isCreating()){
+                    head.getRd().setExecute(false);
+                }
+                else{
+                    head.getRd().interrupt();
+                }
+                rdProducerStack.pop();
             }else{
                 JOptionPane.showMessageDialog(this, "There must be at least one producer.");
             }

@@ -3,7 +3,7 @@ package Classes;
 
 import Interface.Window1;
 
-public class ScrProducer implements Runnable{
+public class ScrProducer extends Thread{
     protected boolean touch; //Tipo de pantalla
     protected boolean execute;
     protected boolean creating;
