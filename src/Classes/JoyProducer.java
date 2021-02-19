@@ -23,7 +23,7 @@ public class JoyProducer extends Thread {
                     Thread.sleep(Window1.timeInterval * 48); //Crear
                     Window1.companyStorage.currJoy.release(); //Liberar
                     Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
-                    System.out.println("Se ha creado un Joystick: " + Window1.companyStorage.currJoy.availablePermits() + " Bajando el limite a: " + Window1.companyLimit.maxJoy.availablePermits());
+                    //System.out.println("Se ha creado un Joystick: " + Window1.companyStorage.currJoy.availablePermits() + " Bajando el limite a: " + Window1.companyLimit.maxJoy.availablePermits());
                 }
                 catch(InterruptedException e){
                     this.execute = false;

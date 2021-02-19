@@ -21,7 +21,7 @@ public class Jefe extends Thread{
                 Window1.getDays_passed().setText(Integer.toString(Window1.contador));
                 Window1.getRemaining_days().setText(Integer.toString(Window1.limiteContador - Window1.contador));
                 Window1.semaforoContador.release(); //Libera los permisos
-                System.out.println("El Jefe incremento el contador: " + Window1.contador);
+                //System.out.println("El Jefe incremento el contador: " + Window1.contador);
             }
             catch(InterruptedException e){
                 

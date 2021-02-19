@@ -26,7 +26,7 @@ public class ScrProducer extends Thread{
                         Window1.companyStorage.currScrTch.release();  //Libera los permisos
                         this.touch = false; //Pasar a siguiente tipo de pantalla
                         Window1.getTouch().setText(Integer.toString(Window1.companyStorage.currScrTch.availablePermits()));
-                        System.out.println("Se ha creado una pantalla tactil, llevando el total hasta: " + Window1.companyStorage.currScrTch.availablePermits() + " bajando el limite hasta: " + Window1.companyLimit.maxScr.availablePermits());
+                        //System.out.println("Se ha creado una pantalla tactil, llevando el total hasta: " + Window1.companyStorage.currScrTch.availablePermits() + " bajando el limite hasta: " + Window1.companyLimit.maxScr.availablePermits());
                     }
                     catch(InterruptedException e){
                         this.execute = false;
@@ -48,7 +48,7 @@ public class ScrProducer extends Thread{
                         Window1.companyStorage.currScrNrm.release(); //Liberas permisos
                         this.touch = true; //Pasar a siguiente tipo de pantalla
                         Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));
-                        System.out.println("Se ha creado una pantalla normal, llevando el total hasta: " + Window1.companyStorage.currScrNrm.availablePermits() + " bajando el limite: " + Window1.companyLimit.maxScr.availablePermits());
+                        //System.out.println("Se ha creado una pantalla normal, llevando el total hasta: " + Window1.companyStorage.currScrNrm.availablePermits() + " bajando el limite: " + Window1.companyLimit.maxScr.availablePermits());
                     }
                     catch(InterruptedException e){
                         this.execute = false;
