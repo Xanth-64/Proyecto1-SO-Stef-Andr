@@ -37,7 +37,8 @@ public class Assembler extends Thread {
             try{
                 Window1.companyStorage.getCurrButt().acquire(5); //Pide 5 botones
                 //System.out.println("Se asignaron 5 botones a un ensamblador");
-               
+                
+                Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
             }
             catch(InterruptedException e){
                 this.execute = false;
@@ -46,39 +47,53 @@ public class Assembler extends Thread {
                 try{
                     Window1.companyStorage.getCurrJoy().acquire(2); //Pide 2 joysticks
                     //System.out.println("Se Asignaron 2 joysticks a un ensamblador");
+                    Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
                 }
                 catch(InterruptedException e){
                     this.execute = false;
                     Window1.companyStorage.getCurrButt().release(5); //Liberas 5 botones
+                    
+                    Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
                 }
             }
             if(this.execute){
                 try{
                    Window1.companyStorage.getCurrScrNrm().acquire(); //Pide 1 pantalla normal
                    //System.out.println("Se Asigno una pantalla normal a un ensamblador");
+                   Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));
                 }
                 catch(InterruptedException e){
                     this.execute = false;
                     Window1.companyStorage.getCurrButt().release(5); //Liberas 5 botones
                     Window1.companyStorage.getCurrJoy().release(2); //Liberas 2 joysticks
+                    
+                    
+                    Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
+                    Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
                 }
             }
             if(this.execute){
                 try{
                     Window1.companyStorage.getCurrScrTch().acquire(); //Pide 1 pantalla tactil
                     //System.out.println("Se Asigno una pantalla tactil a un ensamblador");
+                    Window1.getTouch().setText(Integer.toString(Window1.companyStorage.currScrTch.availablePermits()));
                 }
                 catch(InterruptedException e){
                     this.execute = false;
                     Window1.companyStorage.getCurrButt().release(5); //Liberas 5 botones
                     Window1.companyStorage.getCurrJoy().release(2); //Liberas 2 joysticks
                     Window1.companyStorage.getCurrScrNrm().release(); //Liberas 1 pantalla normal
+                    
+                    Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
+                    Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
+                    Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));
                 }
             }
             if(this.execute){
                 try{
                     Window1.companyStorage.getCurrRd().acquire(); //Pide 1 SD Reader
                     //System.out.println("Se Asigno un lector de tarjetas a un ensamblador");
+                    Window1.getSD_readers().setText(Integer.toString(Window1.companyStorage.currRd.availablePermits()));
                 }
                 catch(InterruptedException e){
                     this.execute = false;
@@ -86,6 +101,11 @@ public class Assembler extends Thread {
                     Window1.companyStorage.getCurrJoy().release(2); //Liberas 2 joysticks
                     Window1.companyStorage.getCurrScrNrm().release(); //Liberas 1 pantalla normal
                     Window1.companyStorage.getCurrScrTch().release(); //Liberas 1 pantalla tactil
+                    
+                    Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
+                    Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
+                    Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));
+                    Window1.getTouch().setText(Integer.toString(Window1.companyStorage.currScrTch.availablePermits()));
                 }
             }
             
@@ -115,6 +135,11 @@ public class Assembler extends Thread {
                    Window1.companyStorage.getCurrScrNrm().release();
                    Window1.companyStorage.getCurrScrTch().release();
                    Window1.companyStorage.getCurrRd().release();
+                   Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
+                   Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
+                   Window1.getSD_readers().setText(Integer.toString(Window1.companyStorage.currRd.availablePermits()));
+                   Window1.getTouch().setText(Integer.toString(Window1.companyStorage.currScrTch.availablePermits()));
+                   Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));
                 }
             }    
         }  

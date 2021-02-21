@@ -3,8 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Stefani/OneDrive/Documents/Trimestre%208/Sistemas%20operativos/Proyecto_SO_AB_SP/Proyecto1-SO-Stef-Andr/src/Interface/Window1.java</file>
             <file>file:/C:/Users/Stefani/OneDrive/Documents/Trimestre%208/Sistemas%20operativos/Proyecto_SO_AB_SP/Proyecto1-SO-Stef-Andr/src/Interface/Window2.java</file>
+=======
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Interface/Window1.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/Stack.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/Gerente.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/ScrProducer.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/ButtProducer.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/Jefe.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/RdProducer.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/Assembler.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/JoyProducer.java</file>
+            <file>file:/C:/Users/Xanth/Documents/NetBeansProjects/ThreadsAndConcurrencyProjectStefaniyAndres/src/Classes/Nodo.java</file>
+>>>>>>> 4029f03638205ae1342cd2b28d7752f24fcde4df
         </group>
     </open-files>
 </project-private>
