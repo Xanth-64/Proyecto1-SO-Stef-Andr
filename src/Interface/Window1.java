@@ -142,11 +142,11 @@ public class Window1 extends javax.swing.JFrame {
                         }
                     }
                     if (    seconds_of_a_day >= 1 &&
-                            initial_button_producers >= 1 &&
-                            initial_joystick_producers >= 1 &&
-                            initial_screen_producers >= 1 &&
-                            initial_sdreader_producers >= 1 &&
-                            initial_assemblers >= 1 &&
+                            initial_button_producers >= 0 &&
+                            initial_joystick_producers >= 0 &&
+                            initial_screen_producers >= 0 &&
+                            initial_sdreader_producers >= 0 &&
+                            initial_assemblers >= 0 &&
                             days_between_shipments >= 6 && 
                             maximum_button_capacity >= 5 &&
                             maximum_joystick_capacity >= 2 &&
@@ -958,15 +958,15 @@ public class Window1 extends javax.swing.JFrame {
     private void delete_button_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_button_producerMouseClicked
         // TODO add your handling code here:
         if (flag) {
-            if(initial_button_producers >= 2){
+            if(initial_button_producers >= 1){
                 initial_button_producers--;
                 Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }else{
-            if(initial_button_producers >= 2){
+            if(initial_button_producers >= 1){
                 initial_button_producers--;
                 Window1.getButton_producers().setText(Integer.toString(initial_button_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
@@ -980,7 +980,7 @@ public class Window1 extends javax.swing.JFrame {
                 buttProducerStack.pop();
                 
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }
     }//GEN-LAST:event_delete_button_producerMouseClicked
@@ -988,15 +988,15 @@ public class Window1 extends javax.swing.JFrame {
     private void delete_joystick_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_joystick_producerMouseClicked
         // TODO add your handling code here:
         if (flag) {
-            if(initial_joystick_producers >= 2){
+            if(initial_joystick_producers >= 1){
                 initial_joystick_producers--;
                 Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }else{
-            if(initial_joystick_producers >= 2){
+            if(initial_joystick_producers >= 1){
                 initial_joystick_producers--;
                 Window1.getJoysticks_producers().setText(Integer.toString(initial_joystick_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
@@ -1009,7 +1009,7 @@ public class Window1 extends javax.swing.JFrame {
                 }
                 joyProducerStack.pop();
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }
     }//GEN-LAST:event_delete_joystick_producerMouseClicked
@@ -1021,15 +1021,15 @@ public class Window1 extends javax.swing.JFrame {
     private void delete_screen_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_screen_producerMouseClicked
         // TODO add your handling code here:
         if (flag) {
-            if(initial_screen_producers >= 2){
+            if(initial_screen_producers >= 1){
                 initial_screen_producers--;
                 Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }else{
-            if(initial_screen_producers >= 2){
+            if(initial_screen_producers >= 1){
                 initial_screen_producers--;
                 Window1.getScreen_producers().setText(Integer.toString(initial_screen_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
@@ -1042,7 +1042,7 @@ public class Window1 extends javax.swing.JFrame {
                 }
                 scrProducerStack.pop();
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }
     }//GEN-LAST:event_delete_screen_producerMouseClicked
@@ -1050,15 +1050,15 @@ public class Window1 extends javax.swing.JFrame {
     private void delete_assemblerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_assemblerMouseClicked
         // TODO add your handling code here:
         if (flag) {
-            if(initial_assemblers >= 2){
+            if(initial_assemblers >= 1){
                 initial_assemblers--;
                 Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }else{
-            if(initial_assemblers >= 2){
+            if(initial_assemblers >= 1){
                 initial_assemblers--;
                 Window1.getAssemblers().setText(Integer.toString(initial_assemblers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
@@ -1071,7 +1071,7 @@ public class Window1 extends javax.swing.JFrame {
                 }
                 assemblerStack.pop();
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }
     }//GEN-LAST:event_delete_assemblerMouseClicked
@@ -1079,15 +1079,15 @@ public class Window1 extends javax.swing.JFrame {
     private void delete_sdreaders_producerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_sdreaders_producerMouseClicked
         // TODO add your handling code here:
         if (flag) {
-            if(initial_sdreader_producers >= 2){
+            if(initial_sdreader_producers >= 1){
                 initial_sdreader_producers--;
                 Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }else{
-            if(initial_sdreader_producers >= 2){
+            if(initial_sdreader_producers >= 1){
                 initial_sdreader_producers--;
                 Window1.getSD_reader_producers().setText(Integer.toString(initial_sdreader_producers));
                 JOptionPane.showMessageDialog(this, "Producer deleted successfully.");
@@ -1100,7 +1100,7 @@ public class Window1 extends javax.swing.JFrame {
                 }
                 rdProducerStack.pop();
             }else{
-                JOptionPane.showMessageDialog(this, "There must be at least one producer.");
+                JOptionPane.showMessageDialog(this, "There cannot be a negative amount of producers.");
             }
         }
     }//GEN-LAST:event_delete_sdreaders_producerMouseClicked
