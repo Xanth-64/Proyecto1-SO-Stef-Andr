@@ -16,7 +16,7 @@ public class Jefe extends Thread{
                 
             }
             try{
-                Thread.sleep(Window1.timeInterval * 6); //Cambiando el contador
+                Thread.sleep((long) (Window1.timeInterval * 6)); //Cambiando el contador
                 Window1.contador++;
                 Window1.getDays_passed().setText(Integer.toString(Window1.contador));
                 Window1.getRemaining_days().setText(Integer.toString(Window1.limiteContador - Window1.contador));
@@ -28,7 +28,7 @@ public class Jefe extends Thread{
             }
             try{
                 Window1.getBoss_status().setText("Sleeping");
-                Thread.sleep(Window1.timeInterval * 18); // A mimir
+                Thread.sleep((long) (Window1.timeInterval * 18)); // A mimir
             }
             catch(InterruptedException e){
             

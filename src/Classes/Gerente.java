@@ -30,7 +30,7 @@ public class Gerente extends Thread {
             }
             try{
                 Window1.semaforoContador.release(); //Libera los permisos pedidos
-                Thread.sleep(Window1.timeInterval * 2); // A mimir
+                Thread.sleep((long) (Window1.timeInterval * 2)); // A mimir
             }
             catch(InterruptedException e){
 

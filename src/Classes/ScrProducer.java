@@ -22,7 +22,7 @@ public class ScrProducer extends Thread{
                 if(this.execute){
                     this.creating = true;
                     try{
-                        Thread.sleep(Window1.timeInterval * 48); //Crear
+                        Thread.sleep((long) (Window1.timeInterval * 48)); //Crear
                         Window1.companyStorage.currScrTch.release();  //Libera los permisos
                         this.touch = false; //Pasar a siguiente tipo de pantalla
                         Window1.getTouch().setText(Integer.toString(Window1.companyStorage.currScrTch.availablePermits()));
@@ -44,7 +44,7 @@ public class ScrProducer extends Thread{
                 if (this.execute){
                     this.creating = true;
                     try{
-                        Thread.sleep(Window1.timeInterval * 24); //Creando
+                        Thread.sleep((long) (Window1.timeInterval * 24)); //Creando
                         Window1.companyStorage.currScrNrm.release(); //Liberas permisos
                         this.touch = true; //Pasar a siguiente tipo de pantalla
                         Window1.getScreens().setText(Integer.toString(Window1.companyStorage.currScrNrm.availablePermits()));

@@ -25,7 +25,7 @@ public class ButtProducer extends Thread {
             if(this.execute){
                 this.creating = true;
                 try{
-                    Thread.sleep(Window1.timeInterval * 24); //Produciendo
+                    Thread.sleep((long) (Window1.timeInterval * 24)); //Produciendo
                     Window1.companyStorage.currButt.release(2); //Libera los permisos
                     Window1.getButtons().setText(Integer.toString(Window1.companyStorage.currButt.availablePermits()));
                     //System.out.println("Se acaban de producir 2 botones para llegar a un total de: " + Window1.companyStorage.currButt.availablePermits() + " Límite actual: " + Window1.companyLimit.maxButt.availablePermits());

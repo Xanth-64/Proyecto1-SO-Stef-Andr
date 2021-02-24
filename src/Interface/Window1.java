@@ -23,7 +23,7 @@ import java.util.concurrent.Semaphore;
 public class Window1 extends javax.swing.JFrame {
     
     
-    public static volatile int timeInterval;
+    public static volatile float timeInterval;
     public static volatile Limit companyLimit;
     public static volatile Storage companyStorage;
     public static volatile int contador;
@@ -34,7 +34,7 @@ public class Window1 extends javax.swing.JFrame {
     public static boolean flag;
     
     //TXT
-    public static int seconds_of_a_day;
+    public static float seconds_of_a_day;
     public static int days_between_shipments;
     public static int maximum_button_capacity;
     public static int maximum_joystick_capacity;
@@ -108,7 +108,7 @@ public class Window1 extends javax.swing.JFrame {
                     for (int i = 0; i < txt_split.length; i++) {
                         String[] data = txt_split[i].split(":");
                         if (data[0].contains("Time in seconds of a day")) {
-                            seconds_of_a_day = Integer.parseInt(data[1]);
+                            seconds_of_a_day = Float.parseFloat(data[1]);
                         }else if(data[0].contains("Number of days between shipments")){
                             days_between_shipments = Integer.parseInt(data[1]);
                         }else if(data[0].contains("Button storage maximum capacity")){

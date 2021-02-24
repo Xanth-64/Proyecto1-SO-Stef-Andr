@@ -14,7 +14,7 @@ public class Window2 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Window2.w1 = w1;
-        this.seconds_of_a_day.setText(Integer.toString(Window1.seconds_of_a_day));
+        this.seconds_of_a_day.setText(Float.toString(Window1.seconds_of_a_day));
         this.days_between_shipments.setText(Integer.toString(Window1.days_between_shipments));
         this.maximum_button_capacity.setText(Integer.toString(Window1.maximum_button_capacity));
         this.maximum_joystick_capacity.setText(Integer.toString(Window1.maximum_joystick_capacity));
@@ -43,10 +43,19 @@ public class Window2 extends javax.swing.JFrame {
 	}
     }
     
+    public boolean isNumeric2(String string){
+        try {
+            Float.parseFloat(string);
+            return true;
+	}catch (NumberFormatException e){
+            return false;
+	}
+    }
+    
     public void write_txt(){
         try {
             String data = "";
-            if (    Integer.parseInt(seconds_of_a_day.getText()) >= 1 &&
+            if (    Float.parseFloat(seconds_of_a_day.getText()) >= 1 &&
                     Integer.parseInt(initial_button_producers.getText()) >= 1 &&
                     Integer.parseInt(initial_joystick_producers.getText()) >= 1 &&
                     Integer.parseInt(initial_screen_producers.getText()) >= 1 &&
@@ -395,7 +404,7 @@ public class Window2 extends javax.swing.JFrame {
 
     private void save_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_save_buttonMouseClicked
         // TODO add your handling code here:
-        if (    isNumeric(seconds_of_a_day.getText()) && isNumeric(days_between_shipments.getText()) &&
+        if (    isNumeric2(seconds_of_a_day.getText()) && isNumeric(days_between_shipments.getText()) &&
                 isNumeric(maximum_button_capacity.getText()) && isNumeric(maximum_joystick_capacity.getText()) &&
                 isNumeric(maximum_screen_capacity.getText()) && isNumeric(maximum_sdreader_capacity.getText()) &&
                 isNumeric(initial_button_producers.getText()) && isNumeric(initial_joystick_producers.getText()) &&
@@ -404,7 +413,7 @@ public class Window2 extends javax.swing.JFrame {
                 isNumeric(max_screen_producers.getText()) && isNumeric(max_sdreader_producers.getText()) &&
                 isNumeric(initial_assemblers.getText()) && isNumeric(max_assemblers.getText())) {
             
-            if (    Integer.parseInt(seconds_of_a_day.getText()) >= 1 && Integer.parseInt(days_between_shipments.getText()) >= 1 &&
+            if (    Float.parseFloat(seconds_of_a_day.getText()) >= 1 && Integer.parseInt(days_between_shipments.getText()) >= 1 &&
                     Integer.parseInt(maximum_button_capacity.getText()) >= 1 && Integer.parseInt(maximum_joystick_capacity.getText()) >= 1 &&
                     Integer.parseInt(maximum_screen_capacity.getText()) >= 1 && Integer.parseInt(maximum_sdreader_capacity.getText()) >= 1 &&
                     Integer.parseInt(initial_button_producers.getText()) >= 1 && Integer.parseInt(initial_joystick_producers.getText()) >= 1 &&

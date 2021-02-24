@@ -20,7 +20,7 @@ public class JoyProducer extends Thread {
             if(this.execute){
                 this.creating = true;
                 try{
-                    Thread.sleep(Window1.timeInterval * 48); //Crear
+                    Thread.sleep((long) (Window1.timeInterval * 48)); //Crear
                     Window1.companyStorage.currJoy.release(); //Liberar
                     Window1.getJoysticks().setText(Integer.toString(Window1.companyStorage.currJoy.availablePermits()));
                     //System.out.println("Se ha creado un Joystick: " + Window1.companyStorage.currJoy.availablePermits() + " Bajando el limite a: " + Window1.companyLimit.maxJoy.availablePermits());

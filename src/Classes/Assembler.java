@@ -112,7 +112,7 @@ public class Assembler extends Thread {
             if(this.execute){
                 this.assembled = true;
                 try{
-                    Thread.sleep(Window1.timeInterval * 24); //Ensamblar
+                    Thread.sleep((long) (Window1.timeInterval * 24)); //Ensamblar
                     Window1.companyStorage.getConsoles().release(); //Agregar 1 consola
                     //Liberar espacio en el almacen
                     Window1.companyLimit.getMaxButt().release(5);
